@@ -1,11 +1,22 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Gym_Management_System.Models
+namespace GymMGT.Models
 {
+
+   
     public class GymTrainee
     {
+
+    
 
         [Key]
         [Column(TypeName = "int")]
@@ -13,7 +24,7 @@ namespace Gym_Management_System.Models
 
 
         [Required]
-        [Column(TypeName = "varchar(50)")]
+        [Column(TypeName ="varchar(50)")]
         [DisplayName("First Name")]
         public String FirstName { get; set; }
 
@@ -45,7 +56,7 @@ namespace Gym_Management_System.Models
         [Column(TypeName = "int")]
         [DisplayName("Weight")]
         public int Weight { get; set; }
-
+       
         [Required]
         [Column(TypeName = "varchar(50)")]
         [DisplayName("Gender")]
@@ -55,8 +66,9 @@ namespace Gym_Management_System.Models
         [Column(TypeName = "varchar(50)")]
         [DisplayName("Address")]
         public String Address { get; set; }
+        
 
-
+       
         [Column(TypeName = "nvarchar(100)")]
         [DisplayName("Image Name")]
         public string ImageName { get; set; }
@@ -64,8 +76,62 @@ namespace Gym_Management_System.Models
         public DateTime CreationDate { get; set; }
 
 
+
         [NotMapped]
         [DisplayName("Upload File")]
         public IFormFile ImageFile { get; set; }
+
+
+
+        //Navigation Property 001
+
+        public int BloodGroupID { get; set; }
+        public virtual BloodGroup BloodGroup { get; set; }
+
+
+        //Navigation Property 002
+        public int TrainingLevelID { get; set; }
+        public virtual TrainingLevel TrainingLevel { get; set; }
+        public int MonthlyFee { get; set; }
+
+
+        private string _feepaid_status = "unknown";
+
+        [NotMapped]
+        public string Feepaid_Status
+        {
+            get
+            {
+                return _feepaid_status;
+            }
+            set
+            {
+                _feepaid_status = value;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+    public enum feefilter
+    {
+        Paid,
+        UnPaid
     }
 }
