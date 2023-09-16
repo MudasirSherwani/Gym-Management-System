@@ -13,7 +13,7 @@ namespace GymMGT.Models
 {
 
    
-    public class GymTrainee
+    public class GymTrainee_result
     {
 
     
@@ -37,7 +37,7 @@ namespace GymMGT.Models
         [Required]
         [Column(TypeName = "varchar(50)")]
         [DisplayName("Contact No")]
-        public String ContactNo { get; set; } = "0";
+        public String ContactNo { get; set; }
 
 
         [Required]
@@ -73,9 +73,6 @@ namespace GymMGT.Models
         [DisplayName("Image Name")]
         public string ImageName { get; set; }
 
-        public DateTime CreationDate { get; set; }
-
-
 
         [NotMapped]
         [DisplayName("Upload File")]
@@ -94,10 +91,7 @@ namespace GymMGT.Models
         public virtual TrainingLevel TrainingLevel { get; set; }
         public int MonthlyFee { get; set; }
 
-
         private string _feepaid_status = "unknown";
-
-        [NotMapped]
         public string Feepaid_Status
         {
             get
@@ -126,12 +120,5 @@ namespace GymMGT.Models
 
 
 
-
-    }
-
-    public enum feefilter
-    {
-        Paid,
-        UnPaid
     }
 }
