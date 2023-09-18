@@ -20,15 +20,8 @@ namespace GymMGT.Models
         public DbSet<GymTrainee> Trainees { get; set; }
         public DbSet<BloodGroup> BloodGroups { get; set; }
         public DbSet<TrainingLevel> TrainingLevels { get; set; }
-
         public DbSet<MonthlyFeeVoucher> MonthlyFeeVouchers { get; set; }
-
-
         public DbSet<GymTrainee_result> GymTrainee_result { get; set; }
-
-
-        
-
-
-    }
+                    
+            }
 }
